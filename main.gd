@@ -1,6 +1,7 @@
 extends Node2D
 var score = 0.0
 const BLOCK = preload("res://block.tscn")
+const BULLET = preload("res://bullet.tscn")
 
 
 func _on_timer_timeout() -> void:
@@ -23,3 +24,10 @@ func game_over():
 func _on_button_pressed() -> void:
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+
+
+func _on_shoot_timer_timeout() -> void:
+	var bullet = BULLET.instantiate()
+	bullet.position = $Player.position
+	add_child(bullet)
+	

@@ -24,6 +24,10 @@ color = Color(0.103954755, 0.58896995, 0.70648474, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1163831148]
 shape = SubResource("RectangleShape2D_u4am4")
 
+[node name="ShootTimer" type="Timer" parent="Player" unique_id=1555390857]
+wait_time = 0.2
+autostart = true
+
 [node name="Timer" parent="." unique_id=1687497452 instance=ExtResource("3_1bvp3")]
 
 [node name="Label" type="Label" parent="." unique_id=36859639]
@@ -59,5 +63,6 @@ offset_bottom = 806.0
 theme_override_font_sizes/font_size = 64
 text = "Play Again !"
 
+[connection signal="timeout" from="Player/ShootTimer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="GameOver/Button" to="." method="_on_button_pressed"]

@@ -13,5 +13,9 @@ func _process(delta: float) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	print("Game Over")# Replace with function body.
-	get_parent().game_over()
+	if area.name == "Player":
+		print("Game Over")
+		get_parent().game_over()
+	elif area.is_in_group("bullets"):
+		area.queue_free()
+		queue_free()
